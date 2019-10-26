@@ -18,7 +18,7 @@ try:
         pwm_servo.ChangeDutyCycle(duty_cycle)
             
 except KeyboardInterrupt:
-    print("CTRL-C: Terminating program.")
+    print("Terminating program.")
 finally:
     print("Cleaning up GPIO...")
     GPIO.cleanup()
