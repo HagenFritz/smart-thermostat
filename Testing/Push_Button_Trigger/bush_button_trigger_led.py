@@ -20,9 +20,10 @@ GPIO.add_event_detect(27,GPIO.RISING,bouncetime=200)
 
 try:
     while True:
-        if GPIO.event_detected(27):
+        if GPIO.event_detected(27): # if the button has been pushed
             activate = True
             while activate is True:
+                # Light flashes
                 GPIO.output(17,True)
                 sleep(0.5)
                 GPIO.output(17,False)
@@ -33,4 +34,5 @@ try:
             GPIO.output(17,False)
             
 except KeyboardInterrupt:
+    # resets GPIOs
     GPIO.cleanup()
