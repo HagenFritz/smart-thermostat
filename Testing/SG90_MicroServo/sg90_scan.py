@@ -24,13 +24,13 @@ pwm_servo.start(duty_cycle)
 try:
     while True:
         pwm_servo.ChangeDutyCycle(MIN_DUTY)
-        time.sleep(0.5)
+        time.sleep(1)
         pwm_servo.ChangeDutyCycle(CENTRE)
-        time.sleep(0.5)
+        time.sleep(1)
         pwm_servo.ChangeDutyCycle(MAX_DUTY)
-        time.sleep(0.5)
+        time.sleep(1)
         pwm_servo.ChangeDutyCycle(CENTRE)
-        time.sleep(0.5)
+        time.sleep(1)
             
 except KeyboardInterrupt:
     print("Terminating program.")
