@@ -9,7 +9,7 @@ The schematic below shows how to connect a push button and LED to the RPi. In th
 ![push_button_trigger_layout](https://github.com/HagenFritz/smart-thermostat/blob/master/Testing/Layouts/push_button_trigger_led_bb.png)
 
 ## Programming the Push Button Trigger
-With the hardware successfully connected to the RPi, we can use the [code](push_button_trigger_led.py) in this same directory to test it. Commenting in the program itself helps to explain the purpose of different lines and is excluded from this document. 
+With the hardware successfully connected to the RPi, we can use the [code](https://github.com/HagenFritz/smart-thermostat/blob/master/Testing/Push_Button_Trigger/bush_button_trigger_led.py) in this same directory to test it. Commenting in the program itself helps to explain the purpose of different lines and is excluded from this document. 
 
 # Resources
 1. [Connecting and Programming](https://myhydropi.com/connect-an-led-and-button-to-a-raspberry-pi)
