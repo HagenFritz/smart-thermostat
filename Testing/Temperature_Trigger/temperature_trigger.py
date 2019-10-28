@@ -26,9 +26,11 @@ sensor = adafruit_sht31d.SHT31D(i2c)
 
 try:
     while True:
-        if sensor.temperature > 22: # if the button has been pushed
+        tc = sensor.temperature
+        print('Temperature',tc)
+        if tc > 22: # if the button has been pushed
             GPIO.output(17,True)
-        elif sensor.temperature < 20:
+        elif tc < 20:
             GPIO.output(27,True)
         else:
             GPIO.output(17,False)
