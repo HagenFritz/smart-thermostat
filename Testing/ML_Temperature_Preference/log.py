@@ -33,9 +33,9 @@ try:
             sleep(0.5)
             GPIO.output(9,False)
             sleep(0.5)
-            GPIO.output(8,True)
+            GPIO.output(8,GPIO.HIGH)
             sleep(0.5)
-            GPIO.output(8,False)
+            GPIO.output(8,GPIO.LOW)
 
         # White Button
         if GPIO.event_detected(6): # if red button has been pushed
