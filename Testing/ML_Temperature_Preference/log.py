@@ -6,9 +6,19 @@ Created on Sat Oct 26 09:00:58 2019
 """
 
 import RPi.GPIO as GPIO
-import GPIO.HIGH as H
-import GPIO.Low as L
 from time import sleep
+
+def led_flash(pin):
+	'''
+	Turns the LED on for a fraction of a second.
+	Input:
+		- pin: integer specifying the pin to turn on and off
+	'''
+	sleep_time = 0.2
+	GPIO.output(pin,GPIO.LOW)
+    sleep(sleep_time)
+    GPIO.output(pin,GPIO.HIGH)
+    sleep(sleep_time)
 
 GPIO.setmode(GPIO.BCM)
 # LED
@@ -16,6 +26,7 @@ led_pins = [9,10,11]
 for pin in led_pins:
 	GPIO.setwarnings(False)
 	GPIO.setup(pin,GPIO.OUT)
+	GPIO.output(pin,GPIO.HIGH)
 # Push Button
 button_pins = [5,6,7]
 for pin in button_pins:
@@ -30,27 +41,18 @@ try:
     while True:
     	# Red Button
         if GPIO.event_detected(5):
-            GPIO.output(9,H)
-            sleep(0.2)
-            GPIO.output(9,L)
-            sleep(0.2)
+      		led_flash(9)
             GPIO.output(8,True)
             sleep(0.5)
             GPIO.output(8,False)
 
         # White Button
         if GPIO.event_detected(6):
-            GPIO.output(10,H)
-            sleep(0.2)
-            GPIO.output(10,L)
-            sleep(0.2)
+            led_flash(10)
 
         # Blue Button
         if GPIO.event_detected(7):
-            GPIO.output(11,H)
-            sleep(0.2)
-            GPIO.output(11,L)
-            sleep(0.2)
+            led_flash(11)
             
 except KeyboardInterrupt:
     # resets GPIOs
