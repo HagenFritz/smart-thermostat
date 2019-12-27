@@ -10,27 +10,39 @@ from time import sleep
 
 GPIO.setmode(GPIO.BCM)
 # LED
-GPIO.setwarnings(False)
-GPIO.setup(17,GPIO.OUT)
-GPIO.output(17,False)
+led_pins = [9,10,11]
+for pin in led_pins:
+	GPIO.setwarnings(False)
+	GPIO.setup(pin,GPIO.OUT)
+	GPIO.output(pin,False)
 # Push Button
-GPIO.setup(27,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
-GPIO.add_event_detect(27,GPIO.RISING,bouncetime=200)
+button_pins = [5,6,7]
+for pin in button_pins:
+	GPIO.setup(pin,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+	GPIO.add_event_detect(pin,GPIO.RISING,bouncetime=200)
 
 try:
     while True:
-        if GPIO.event_detected(27): # if the button has been pushed
-            activate = True
-            while activate is True:
-                # Light flashes
-                GPIO.output(17,True)
-                sleep(0.5)
-                GPIO.output(17,False)
-                sleep(0.5)
-                if GPIO.event_detected(27):
-                    activate = False
-        else:
-            GPIO.output(17,False)
+    	# Red Button
+        if GPIO.event_detected(5):
+            GPIO.output(9,True)
+            sleep(0.5)
+            GPIO.output(9,False)
+            sleep(0.5)
+
+        # White Button
+        if GPIO.event_detected(6): # if red button has been pushed
+            GPIO.output(10,True)
+            sleep(0.5)
+            GPIO.output(10,False)
+            sleep(0.5)
+
+        # Blue Button
+        if GPIO.event_detected(7): # if red button has been pushed
+            GPIO.output(11,True)
+            sleep(0.5)
+            GPIO.output(11,False)
+            sleep(0.5)
             
 except KeyboardInterrupt:
     # resets GPIOs
