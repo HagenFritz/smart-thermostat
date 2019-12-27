@@ -20,6 +20,10 @@ button_pins = [5,6,7]
 for pin in button_pins:
 	GPIO.setup(pin,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 	GPIO.add_event_detect(pin,GPIO.RISING,bouncetime=200)
+# Fan
+GPIO.setwarnings(False)
+GPIO.setup(8,GPIO.OUT)
+GPIO.output(8,False)
 
 try:
     while True:
@@ -29,6 +33,9 @@ try:
             sleep(0.5)
             GPIO.output(9,False)
             sleep(0.5)
+            GPIO.output(8,True)
+            sleep(0.5)
+            GPIO.output(8,False)
 
         # White Button
         if GPIO.event_detected(6): # if red button has been pushed
