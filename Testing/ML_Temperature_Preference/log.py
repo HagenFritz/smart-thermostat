@@ -16,9 +16,9 @@ def led_flash(pin):
 	'''
 	sleep_time = 0.2
 	GPIO.output(pin,GPIO.LOW)
-    sleep(sleep_time)
-    GPIO.output(pin,GPIO.HIGH)
-    sleep(sleep_time)
+	sleep(sleep_time)
+	GPIO.output(pin,GPIO.HIGH)
+	sleep(sleep_time)
 
 GPIO.setmode(GPIO.BCM)
 # LED
