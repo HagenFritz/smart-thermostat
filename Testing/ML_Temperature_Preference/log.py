@@ -48,7 +48,7 @@ try:
 
 		# White Button
 		if GPIO.event_detected(button_pins[1]):
-			led_flash(led{pins[1]})
+			led_flash(led_pins[1])
 
 		# Blue Button
 		if GPIO.event_detected(button_pins[2]):
