@@ -41,10 +41,10 @@ try:
     while True:
     	# Red Button
         if GPIO.event_detected(5):
-      		led_flash(9)
-            GPIO.output(8,True)
-            sleep(0.5)
-            GPIO.output(8,False)
+			led_flash(9)
+			GPIO.output(8,True)
+			sleep(0.5)
+			GPIO.output(8,False)
 
         # White Button
         if GPIO.event_detected(6):
