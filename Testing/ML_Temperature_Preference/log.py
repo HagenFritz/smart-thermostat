@@ -39,9 +39,9 @@ try:
 
         # White Button
         if GPIO.event_detected(6):
-            GPIO.output(10,True)
+            GPIO.output(10,GPIO.HIGH)
             sleep(0.5)
-            GPIO.output(10,False)
+            GPIO.output(10,GPIO.LOW)
             sleep(0.5)
 
         # Blue Button
