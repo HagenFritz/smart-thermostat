@@ -33,19 +33,19 @@ try:
             sleep(0.5)
             GPIO.output(9,False)
             sleep(0.5)
-            GPIO.output(8,GPIO.HIGH)
+            GPIO.output(8,True)
             sleep(0.5)
-            GPIO.output(8,GPIO.LOW)
+            GPIO.output(8,False)
 
         # White Button
-        if GPIO.event_detected(6): # if red button has been pushed
+        if GPIO.event_detected(6):
             GPIO.output(10,True)
             sleep(0.5)
             GPIO.output(10,False)
             sleep(0.5)
 
         # Blue Button
-        if GPIO.event_detected(7): # if red button has been pushed
+        if GPIO.event_detected(7):
             GPIO.output(11,True)
             sleep(0.5)
             GPIO.output(11,False)
