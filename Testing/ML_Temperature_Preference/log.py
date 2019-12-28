@@ -28,7 +28,7 @@ led_pins = [23,24,26,16,6,5,25]
 for pin in led_pins:
 	GPIO.setwarnings(False)
 	GPIO.setup(pin,GPIO.OUT)
-	GPIO.output(pin,GPIO.LOW)
+	GPIO.output(pin,GPIO.HIGH)
 
 # Push Button
 button_pins = [17,27]
@@ -50,8 +50,8 @@ try:
 			led_flash(color_pins[3])
 			GPIO.output(color_pins[3],GPIO.LOW)
 		else:
-			print("here")
 			GPIO.output(color_pins[4],GPIO.LOW)
+
 		# Red Button
 		if GPIO.event_detected(button_pins[0]):
 			led_flash(led_pins[0])
@@ -59,8 +59,6 @@ try:
 		# Green Button
 		if GPIO.event_detected(button_pins[1]):
 			led_flash(led_pins[1])
-
-		time.sleep(5)
             
 except KeyboardInterrupt:
 	# resets GPIOs
