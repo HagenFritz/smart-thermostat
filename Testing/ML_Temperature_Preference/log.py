@@ -45,27 +45,45 @@ for pin in button_pins:
 
 color_pins = {'white':26,'blue':16,'green':6,'yellow':5,'red':25}
 
+button_time = []
+color_on = []
+correct = []
 try:
 	while True:
 		if datetime.now().hour % 2 == 0:
 			GPIO.output(color_pins['blue'],GPIO.LOW)
+			color = 'blue'
 		elif datetime.now().hour % 3 == 0:
 			GPIO.output(color_pins['green'],GPIO.LOW)
+			color = 'green'
 		elif datetime.now().hour % 5 == 0:
 			GPIO.output(color_pins['yellow'],GPIO.LOW)
+			color = 'yellow'
 		elif datetime.now().hour % 7 == 0:
-			GPIO.output(color_pins['green'],GPIO.LOW)
+			GPIO.output(color_pins['red'],GPIO.LOW)
+			color = 'red'
 		else:
 			GPIO.output(color_pins['white'],GPIO.LOW)
+			color = 'white'
 
 		# Red Button
 		if GPIO.event_detected(button_pins[0]):
 			led_flash(led_pins[0])
+			button_time.append(datetime.now())
+			color_on.append(color)
+			correct.append(0)
 
 		# Green Button
 		if GPIO.event_detected(button_pins[1]):
 			led_flash(led_pins[1])
+			button_time.append(datetime.now())
+			color_on.append(color)
+			correct.append(1)
             
 except KeyboardInterrupt:
 	# resets GPIOs
 	GPIO.cleanup()
+	# Writes data to dataframe and exports it as a csv
+	data = pd.DataFrame(data = {'Time':button_time,'Color':color_on,'Correct':correct})
+	filename = 'DATA/'+str(datetime.now().month)+str(datetime.now().day)+str(datetime.now().hour)+str(datetime.now().minute)+'.csv'
+	data.to_csv(filename)
