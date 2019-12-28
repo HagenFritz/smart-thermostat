@@ -28,7 +28,7 @@ led_pins = [23,24,26,16,6,5,25]
 for pin in led_pins:
 	GPIO.setwarnings(False)
 	GPIO.setup(pin,GPIO.OUT)
-	GPIO.output(pin,GPIO.HIGH)
+	GPIO.output(pin,GPIO.LOW)
 
 # Push Button
 button_pins = [17,27]
