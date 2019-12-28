@@ -51,20 +51,40 @@ correct = []
 try:
 	while True:
 		if datetime.now().hour % 2 == 0:
-			GPIO.output(color_pins['blue'],GPIO.LOW)
 			color = 'blue'
+			for key, value in color_pins.items():
+				if key == color:
+					GPIO.output(value,GPIO.LOW)
+				else:
+					GPIO.output(value,GPIO.HIGH)
 		elif datetime.now().hour % 3 == 0:
-			GPIO.output(color_pins['green'],GPIO.LOW)
 			color = 'green'
+			for key, value in color_pins.items():
+				if key == color:
+					GPIO.output(value,GPIO.LOW)
+				else:
+					GPIO.output(value,GPIO.HIGH)
 		elif datetime.now().hour % 5 == 0:
-			GPIO.output(color_pins['yellow'],GPIO.LOW)
 			color = 'yellow'
+			for key, value in color_pins.items():
+				if key == color:
+					GPIO.output(value,GPIO.LOW)
+				else:
+					GPIO.output(value,GPIO.HIGH)
 		elif datetime.now().hour % 7 == 0:
-			GPIO.output(color_pins['red'],GPIO.LOW)
 			color = 'red'
+			for key, value in color_pins.items():
+				if key == color:
+					GPIO.output(value,GPIO.LOW)
+				else:
+					GPIO.output(value,GPIO.HIGH)
 		else:
-			GPIO.output(color_pins['white'],GPIO.LOW)
 			color = 'white'
+			for key, value in color_pins.items():
+				if key == color:
+					GPIO.output(value,GPIO.LOW)
+				else:
+					GPIO.output(value,GPIO.HIGH)
 
 		# Red Button
 		if GPIO.event_detected(button_pins[0]):
