@@ -47,8 +47,10 @@ try:
 		elif datetime.now().hour < 12:
 			GPIO.output(color_pins[2],GPIO.LOW)
 		elif datetime.now().hour < 16:
+			led_flash(color_pins[3])
 			GPIO.output(color_pins[3],GPIO.LOW)
 		else:
+			print("here")
 			GPIO.output(color_pins[4],GPIO.LOW)
 		# Red Button
 		if GPIO.event_detected(button_pins[0]):
@@ -57,6 +59,8 @@ try:
 		# Green Button
 		if GPIO.event_detected(button_pins[1]):
 			led_flash(led_pins[1])
+
+		time.sleep(5)
             
 except KeyboardInterrupt:
 	# resets GPIOs
